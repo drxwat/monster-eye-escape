@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/runing_boots.wav-8c93351dab43ecf6124d6e97641d46fe.sample"
+
+[deps]
+
+source_file="res://sfx/runing_boots.wav"
+dest_files=[ "res://.import/runing_boots.wav-8c93351dab43ecf6124d6e97641d46fe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

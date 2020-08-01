@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/ui (new)/health_ui.png" type="Texture" id=1]
+[ext_resource path="res://HP.gd" type="Script" id=2]
+
+[node name="HP" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 240, 50 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 54.9834
+margin_top = 0.318195
+margin_right = 234.983
+margin_bottom = 48.3182
+color = Color( 0.584314, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 240.0
+margin_bottom = 48.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

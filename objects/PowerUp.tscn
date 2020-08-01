@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/props_itens/potion_red.png" type="Texture" id=1]
+[ext_resource path="res://objects/PowerUp.gd" type="Script" id=2]
+[ext_resource path="res://sfx/hp_potion_pickup.wav" type="AudioStream" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 5.0
+
+[node name="PowerUp" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 2 )
+pick_up_sfx = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.695892, 0.927853 )
+texture = ExtResource( 1 )

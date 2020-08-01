@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/knight/KnightFrames.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://enemies/knight/Knight.gd" type="Script" id=3]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/weapon_sword_1.png" type="Texture" id=4]
+[ext_resource path="res://light.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Graphix/Sword:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -40.6276, -0.25, 0, 0.25, 0, 103.355, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2 )
+}
+
+[node name="Knight" instance=ExtResource( 1 )]
+collision_layer = 2
+script = ExtResource( 3 )
+
+[node name="GuardArea" parent="." index="0"]
+collision_layer = 0
+
+[node name="AttackArea" parent="." index="1"]
+collision_layer = 0
+
+[node name="Sprite" parent="Graphix" index="0"]
+visible = false
+
+[node name="Sword" type="Sprite" parent="Graphix" index="1"]
+position = Vector2( 4.22916, 0.635147 )
+rotation = -0.709085
+texture = ExtResource( 4 )
+offset = Vector2( 4.34832, -3.42007 )
+
+[node name="BodySprite" type="AnimatedSprite" parent="Graphix" index="2"]
+frames = ExtResource( 2 )
+animation = "death"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+anims/attack = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="." index="5"]
+texture = ExtResource( 5 )
+texture_scale = 1.5
+color = Color( 0.584314, 0.584314, 0.584314, 1 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

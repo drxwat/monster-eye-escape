@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knight_take_damage.wav-b8dd581c71ef2f43bb46e87b393ce8ea.sample"
+
+[deps]
+
+source_file="res://sfx/knight_take_damage.wav"
+dest_files=[ "res://.import/knight_take_damage.wav-b8dd581c71ef2f43bb46e87b393ce8ea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

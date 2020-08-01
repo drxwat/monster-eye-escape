@@ -1,0 +1,56 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f1.png" type="Texture" id=1]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f2.png" type="Texture" id=2]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f0.png" type="Texture" id=3]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f12.png" type="Texture" id=4]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f10.png" type="Texture" id=5]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f9.png" type="Texture" id=6]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f13.png" type="Texture" id=7]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f7.png" type="Texture" id=8]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f4.png" type="Texture" id=9]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f6.png" type="Texture" id=10]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f11.png" type="Texture" id=11]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f3.png" type="Texture" id=12]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f8.png" type="Texture" id=13]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/tiles/wall/door_anim_opening_f5.png" type="Texture" id=14]
+[ext_resource path="res://objects/gate/Gate.gd" type="Script" id=15]
+[ext_resource path="res://sfx/gate_opening.wav" type="AudioStream" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "close",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "open",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15, 5 )
+
+[node name="Gate" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 15
+mode = 3
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+script = ExtResource( 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.647064, 11.0001 )
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+[connection signal="body_entered" from="." to="." method="_on_Gate_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hp_potion_pickup.wav-f02e358d794955bac0803f59c02b2df5.sample"
+
+[deps]
+
+source_file="res://sfx/hp_potion_pickup.wav"
+dest_files=[ "res://.import/hp_potion_pickup.wav-f02e358d794955bac0803f59c02b2df5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

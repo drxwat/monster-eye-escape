@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/props_itens/key_silver.png" type="Texture" id=1]
+
+[node name="PickedKey" type="Sprite"]
+texture = ExtResource( 1 )

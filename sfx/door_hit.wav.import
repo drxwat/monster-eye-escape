@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/door_hit.wav-8befea780c103105f0158e023e5c11b2.sample"
+
+[deps]
+
+source_file="res://sfx/door_hit.wav"
+dest_files=[ "res://.import/door_hit.wav-8befea780c103105f0158e023e5c11b2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
