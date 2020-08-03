@@ -10,6 +10,9 @@ func _ready():
 func die():
 	.die()
 	$Graphix/Item.hide()
+	call_deferred("drop_item")
+
+func drop_item():
 	if not item_sceene:
 		return
 	var drop = item_sceene.instance()

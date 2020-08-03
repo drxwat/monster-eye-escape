@@ -57,6 +57,9 @@ func _process(delta):
 	if is_attacking:
 		attack(target)
 
+func disable_collision():
+	$CollisionShape2D.disabled = true
+
 func set_target(value):
 	nav_path = null
 	target = value

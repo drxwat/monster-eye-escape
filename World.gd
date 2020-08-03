@@ -37,6 +37,8 @@ func start_hunt():
 		var path = Global.get_nav_path(chaser.position, $RigidPlayer.position)
 		chaser.set_path(path)
 
-
 func _on_AudioStreamPlayer_finished():
 	$AudioStreamPlayer.play()
+
+func _on_NextLevel_body_entered(body):
+	Global.goto_outro()

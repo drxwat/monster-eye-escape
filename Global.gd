@@ -44,7 +44,13 @@ func start_new_game():
 	var start_sceene_path = "res://levels/Intro.tscn"
 	var start_scene = load(start_sceene_path)
 	goto_scene(start_scene)
-	
+
+func goto_outro():
+	var outro_sceene_path = "res://levels/Outro.tscn"
+	var outro_sceene = load(outro_sceene_path)
+	goto_scene(outro_sceene)
+
+
 func exit_game():
 	get_tree().quit()
 

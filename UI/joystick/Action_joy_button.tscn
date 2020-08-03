@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/joystick/assets/big/action_btn/action_inactive.png" type="Texture" id=1]
+[ext_resource path="res://UI/joystick/assets/big/action_btn/action_boundary.png" type="Texture" id=2]
+[ext_resource path="res://UI/joystick/assets/big/action_btn/action_active.png" type="Texture" id=3]
+[ext_resource path="res://UI/joystick/Action_joy_button.gd" type="Script" id=4]
+
+[node name="Action_joy_button" type="Sprite"]
+texture = ExtResource( 2 )
+script = ExtResource( 4 )
+
+[node name="ActionButton" type="TouchScreenButton" parent="."]
+position = Vector2( -112, -112 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 3 )
+[connection signal="pressed" from="ActionButton" to="." method="on_action_pressed"]
+[connection signal="released" from="ActionButton" to="." method="_on_ActionButton_released"]

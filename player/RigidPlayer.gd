@@ -5,6 +5,8 @@ var item_to_pick = null
 var picked_item = null
 var item_to_release = null
 var is_dead = false
+var joystick
+var joystick_action
 
 var MAX_HP = 4
 var HP = MAX_HP
@@ -13,6 +15,8 @@ export var AIM_LENGTH = 50
 export var sfx_take_dmg: AudioStream
 export var sfx_die: AudioStream
 export var disabled = false
+export var joystick_path : NodePath
+export var joystick_action_path: NodePath
 
 signal hp_change
 signal dead
@@ -25,6 +29,10 @@ var directions: = {
 }
 
 func _ready():
+	if joystick_path:
+		joystick = get_node(joystick_path)
+	if joystick_action_path:
+		joystick_action = get_node(joystick_action_path)
 	$AnimatedSprite.play("fly")
 
 func _process(delta):
@@ -34,17 +42,36 @@ func _process(delta):
 		if Input.is_action_just_pressed("restart"):
 			get_tree().reload_current_scene()
 		return
-	if not picked_item and Input.is_action_pressed("attack") and item_to_pick:
+	if not picked_item and is_attack_pressed() and item_to_pick:
 		pickup_item(item_to_pick)
-	if Input.is_action_just_released("attack") and picked_item:
+	if is_attack_released() and picked_item:
 		release_item()
 
+func is_attack_pressed():
+	var is_pressed = false
+	if joystick_action:
+		is_pressed = joystick_action.is_pressed
+		if is_pressed:
+			return is_pressed
+	return Input.is_action_pressed("attack")
+
+func is_attack_released():
+	var is_released = false
+	if joystick_action:
+		is_released = joystick_action.is_released
+		if is_released:
+			return is_released
+	return Input.is_action_just_released("attack")
+	
 func _physics_process(delta):
 	if disabled:
 		return
 	if is_dead:
 		return
+		
 	var move_dir = Vector2.ZERO
+	if joystick:
+		move_dir = joystick.get_direction()
 	if Input.is_action_pressed("move_top"):
 		move_dir += directions.get("TOP")
 	if Input.is_action_pressed("move_down"):
@@ -55,6 +82,7 @@ func _physics_process(delta):
 		move_dir += directions.get("RIGHT")
 	$AnimatedSprite.flip_h = linear_velocity.x < 0
 	apply_central_impulse(move_dir)
+	slope_aside(move_dir.x)
 	draw_aim()
 
 func take_damage(dmg: int, direction = Vector2(0, 0)):
@@ -66,6 +94,15 @@ func take_damage(dmg: int, direction = Vector2(0, 0)):
 		die()
 	else:
 		play_sfx(sfx_take_dmg)
+
+func slope_aside(x):
+	var sprite = $AnimatedSprite
+	if x > 0:
+		sprite.rotation_degrees = 15
+	elif x < 0:
+		sprite.rotation_degrees = -15
+	else:
+		sprite.rotation_degrees = 0
 
 func die():
 	$AnimatedSprite.play("die")
