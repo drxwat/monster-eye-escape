@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/ui (new)/health_ui.png" type="Texture" id=1]
-[ext_resource path="res://HP.gd" type="Script" id=2]
+[ext_resource path="res://UI/HP.gd" type="Script" id=2]
 
 [node name="HP" type="Control"]
 anchor_right = 1.0

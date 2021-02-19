@@ -4,7 +4,8 @@
 [ext_resource path="res://enemies/knight/KnightFrames.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://enemies/knight/Knight.gd" type="Script" id=3]
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/weapon_sword_1.png" type="Texture" id=4]
-[ext_resource path="res://light.png" type="Texture" id=5]
+[ext_resource path="res://images/light.png" type="Texture" id=5]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"

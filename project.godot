@@ -58,7 +58,7 @@ _global_script_class_icons={
 
 config/name="Workout-1"
 run/main_scene="res://UI/TitleScreen.tscn"
-config/icon="res://web_hi_res_512.png"
+config/icon="res://images/web_hi_res_512.png"
 
 [autoload]
 

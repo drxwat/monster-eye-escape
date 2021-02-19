@@ -9,6 +9,9 @@ var title_screen: Control
 var show_pause_sceen = false
 var is_game_started = false
 
+onready var start_scene = preload("res://levels/Intro.tscn")
+onready var outro_sceene = preload("res://levels/Outro.tscn")
+
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	var root = get_tree().get_root()
@@ -41,15 +44,10 @@ func toggle_pause():
 
 func start_new_game():
 	is_game_started = true
-	var start_sceene_path = "res://levels/Intro.tscn"
-	var start_scene = load(start_sceene_path)
 	goto_scene(start_scene)
 
 func goto_outro():
-	var outro_sceene_path = "res://levels/Outro.tscn"
-	var outro_sceene = load(outro_sceene_path)
 	goto_scene(outro_sceene)
-
 
 func exit_game():
 	get_tree().quit()

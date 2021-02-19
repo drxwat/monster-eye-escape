@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://env_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://player/RigidPlayer.tscn" type="PackedScene" id=2]
@@ -18,8 +18,6 @@
 [ext_resource path="res://Navigation2D.gd" type="Script" id=16]
 [ext_resource path="res://sfx/door_hit.wav" type="AudioStream" id=17]
 [ext_resource path="res://UI/TitleScreen.tscn" type="PackedScene" id=18]
-[ext_resource path="res://sfx/knight_die.wav" type="AudioStream" id=19]
-[ext_resource path="res://sfx/knight_take_damage.wav" type="AudioStream" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 8, 16, 0, 16, 0, 8, 8, 8 )
@@ -293,54 +291,53 @@ __meta__ = {
 
 [node name="Torch" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 942.761, 154.562 )
-frame = 1
+frame = 2
 
 [node name="Torch2" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 1129.18, 103.067 )
+frame = 0
 
 [node name="Torch3" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 1054.61, 100.754 )
-frame = 2
+frame = 3
 
 [node name="Torch4" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 866.719, 189.667 )
-frame = 4
 
 [node name="Torch5" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 890.218, 55.486 )
-frame = 1
+frame = 2
 
 [node name="Torch6" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 1013.16, 54.8049 )
-frame = 2
+frame = 3
 
 [node name="Torch7" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 867.741, 421.589 )
-frame = 3
+frame = 4
 
 [node name="Torch8" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 966.504, 422.952 )
-frame = 4
 
 [node name="Torch9" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 624.24, 230.534 )
-frame = 0
+frame = 1
 
 [node name="Torch10" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 744.458, 234.962 )
-frame = 0
+frame = 1
 
 [node name="Torch11" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 854.119, 233.599 )
-frame = 2
+frame = 3
 
 [node name="Torch12" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 656.593, 308.864 )
-frame = 3
+frame = 4
 
 [node name="Torch13" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 797.926, 307.161 )
-frame = 2
+frame = 3
 
 [node name="atttack_door" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 354.646, 123.016 )
@@ -379,22 +376,16 @@ position = Vector2( 351.172, 341.092 )
 
 [node name="KnightWithItem" parent="enemies" instance=ExtResource( 14 )]
 position = Vector2( 805.356, 273.942 )
-take_dmg_sfx = ExtResource( 20 )
-die_sfx = ExtResource( 19 )
 item_sceene = ExtResource( 10 )
 
 [node name="KnightWithKey" parent="enemies" instance=ExtResource( 11 )]
 position = Vector2( 1180.6, 159.566 )
-take_dmg_sfx = ExtResource( 20 )
-die_sfx = ExtResource( 19 )
 
 [node name="Knight5" parent="enemies" instance=ExtResource( 5 )]
 position = Vector2( 977.922, 191.05 )
 
 [node name="KnightWithItem2" parent="enemies" instance=ExtResource( 14 )]
 position = Vector2( 909.287, 132.74 )
-take_dmg_sfx = ExtResource( 20 )
-die_sfx = ExtResource( 19 )
 item_sceene = ExtResource( 10 )
 
 [node name="Knight3" parent="enemies" instance=ExtResource( 5 )]
@@ -537,6 +528,24 @@ position = Vector2( 983.116, 441.284 )
 [node name="Bucket32" parent="objects" instance=ExtResource( 6 )]
 position = Vector2( 991.855, 521.918 )
 
+[node name="Bomb14" parent="objects" instance=ExtResource( 3 )]
+position = Vector2( -12.2542, -20.3228 )
+
+[node name="Bomb15" parent="objects" instance=ExtResource( 3 )]
+position = Vector2( 18.033, -21.8628 )
+
+[node name="Bomb16" parent="objects" instance=ExtResource( 3 )]
+position = Vector2( -3.01404, 7.91097 )
+
+[node name="Bomb17" parent="objects" instance=ExtResource( 3 )]
+position = Vector2( 26.2464, 0.724197 )
+
+[node name="Bomb18" parent="objects" instance=ExtResource( 3 )]
+position = Vector2( -6.60744, 100.826 )
+
+[node name="Bucket33" parent="objects" instance=ExtResource( 6 )]
+position = Vector2( 407.325, 192.263 )
+
 [node name="pickups" type="Node2D" parent="."]
 
 [node name="HealPotion7" parent="pickups" instance=ExtResource( 10 )]
@@ -573,8 +582,9 @@ position = Vector2( 21.113, 99.7991 )
 position = Vector2( -14.3076, 35.6314 )
 
 [node name="RigidPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 318.047, 190.008 )
+position = Vector2( 309.423, 192.077 )
 linear_damp = 0.5
+move_speed = 100.0
 
 [node name="Gate" parent="." instance=ExtResource( 9 )]
 position = Vector2( 928.121, 415.299 )
@@ -593,9 +603,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bucket" parent="." instance=ExtResource( 6 )]
-position = Vector2( 407.325, 192.263 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 volume_db = -10.0
@@ -606,21 +613,6 @@ position = Vector2( 352.167, 127.206 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="Bomb" parent="." instance=ExtResource( 3 )]
-position = Vector2( -12.2542, -20.3228 )
-
-[node name="Bomb2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 18.033, -21.8628 )
-
-[node name="Bomb3" parent="." instance=ExtResource( 3 )]
-position = Vector2( -3.01404, 7.91097 )
-
-[node name="Bomb4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 26.2464, 0.724197 )
-
-[node name="Bomb5" parent="." instance=ExtResource( 3 )]
-position = Vector2( -6.60744, 100.826 )
 
 [node name="NextLevel" parent="." instance=ExtResource( 12 )]
 position = Vector2( 926.303, 624.987 )

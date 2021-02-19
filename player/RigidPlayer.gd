@@ -7,16 +7,18 @@ var item_to_release = null
 var is_dead = false
 var joystick
 var joystick_action
+var _state: int = IDLE
 
 var MAX_HP = 4
 var HP = MAX_HP
 
-export var AIM_LENGTH = 50
+export var move_speed := 400.0
 export var sfx_take_dmg: AudioStream
 export var sfx_die: AudioStream
 export var disabled = false
 export var joystick_path : NodePath
 export var joystick_action_path: NodePath
+
 
 signal hp_change
 signal dead
@@ -26,6 +28,11 @@ var directions: = {
 	"DOWN": Vector2(0, 1),
 	"LEFT": Vector2(-1, 0),
 	"RIGHT": Vector2(1, 0)
+}
+
+enum {
+	IDLE,
+	MOVE
 }
 
 func _ready():
@@ -72,18 +79,42 @@ func _physics_process(delta):
 	var move_dir = Vector2.ZERO
 	if joystick:
 		move_dir = joystick.get_direction()
-	if Input.is_action_pressed("move_top"):
-		move_dir += directions.get("TOP")
-	if Input.is_action_pressed("move_down"):
-		move_dir += directions.get("DOWN")
-	if Input.is_action_pressed("move_left"):
-		move_dir += directions.get("LEFT")
-	if Input.is_action_pressed("move_right"):
-		move_dir += directions.get("RIGHT")
-	$AnimatedSprite.flip_h = linear_velocity.x < 0
+	else:
+		move_dir = get_move_direction()
 	apply_central_impulse(move_dir)
-	slope_aside(move_dir.x)
-	draw_aim()
+	
+#	var move_dir = Vector2.ZERO
+#	if joystick:
+#		move_dir = joystick.get_direction()
+#	if Input.is_action_pressed("move_top"):
+#		move_dir += directions.get("TOP")
+#	if Input.is_action_pressed("move_down"):
+#		move_dir += directions.get("DOWN")
+#	if Input.is_action_pressed("move_left"):
+#		move_dir += directions.get("LEFT")
+#	if Input.is_action_pressed("move_right"):
+#		move_dir += directions.get("RIGHT")
+#	$AnimatedSprite.flip_h = linear_velocity.x < 0
+#	apply_central_impulse(move_dir)
+#	slope_aside(move_dir.x)
+
+#func _integrate_forces(state):
+#	var move_dir = get_move_direction()
+#	state.linear_velocity = move_dir * move_speed
+#	if not move_dir.x:
+#		state.linear_velocity.x = 0
+#	if not move_dir.y:
+#		state.linear_velocity.y = 0
+#
+	
+		
+	
+
+func get_move_direction():
+	return Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_top")
+	)
 
 func take_damage(dmg: int, direction = Vector2(0, 0)):
 	changeHP(-dmg)
@@ -109,9 +140,6 @@ func die():
 	is_dead = true
 	play_sfx(sfx_die)
 	emit_signal("dead")
-
-func draw_aim():
-	$Aim.points = PoolVector2Array([Vector2.ZERO, linear_velocity.normalized() * AIM_LENGTH])
 
 func changeHP(value):
 	HP = min(HP + value, MAX_HP) if value >= 0 else max(HP + value, 0)

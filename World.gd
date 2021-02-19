@@ -6,6 +6,8 @@ export var attacker1: NodePath
 export var attacker2: NodePath
 export var time_left := 90
 
+onready var hunt_gate_wr := weakref($HUNT_GATE)
+
 func _ready():
 	$atttack_door.play()
 	emit_signal("time_left_change", time_left)
@@ -29,8 +31,8 @@ func _on_Timer_timeout():
 	emit_signal("time_left_change", time_left)
 
 func start_hunt():
-	if $HUNT_GATE:
-		$HUNT_GATE.queue_free()
+	if hunt_gate_wr.get_ref():
+		hunt_gate_wr.get_ref().queue_free()
 	var i = 0
 	for chaser in $chasers.get_children():
 		chaser.disabled = false
