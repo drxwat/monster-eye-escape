@@ -8,7 +8,7 @@
 radius = 5.0
 height = 5.0
 
-[sub_resource type="OccluderPolygon2D" id=4]
+[sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( -4.78732, -3.85682, -2.6887, -7.13172, 2.38335, -7.31453, 5.05815, -4.12396, 5.23435, 3.03632, 2.0422, 6.20831, -1.83626, 6.29547, -4.80874, 2.90507 )
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -28,7 +28,7 @@ position = Vector2( 0.596642, 0.696083 )
 shape = SubResource( 1 )
 
 [node name="LightOccluder2D" parent="." index="2"]
-occluder = SubResource( 4 )
+occluder = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
 collision_layer = 0

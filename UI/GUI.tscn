@@ -26,7 +26,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 262.0
-margin_bottom = 85.0
+margin_bottom = 120.0
 
 [node name="HP" parent="MarginContainer/HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0

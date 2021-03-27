@@ -238,37 +238,37 @@ position = Vector2( 210.486, 115.634 )
 position = Vector2( 929.761, 122.651 )
 
 [node name="FlyFiend" parent="Alies" index="0" instance=ExtResource( 2 )]
+frame = 2
 
 [node name="FlyFiend2" parent="Alies" index="1" instance=ExtResource( 2 )]
 position = Vector2( 34.3967, -21.1148 )
-frame = 2
+frame = 1
 
 [node name="FlyFiend3" parent="Alies" index="2" instance=ExtResource( 2 )]
 position = Vector2( 28.9478, 5.10843 )
-frame = 2
+frame = 1
 
 [node name="FlyFiend4" parent="Alies" index="3" instance=ExtResource( 2 )]
 position = Vector2( 28.9476, -51.0842 )
-frame = 2
+frame = 1
 
 [node name="FlyFiend5" parent="Alies" index="4" instance=ExtResource( 2 )]
 position = Vector2( -2.04333, -47.338 )
-frame = 1
+frame = 0
 
 [node name="FlyFiend6" parent="Alies" index="5" instance=ExtResource( 2 )]
 position = Vector2( -29.2883, -21.1148 )
-frame = 0
 
 [node name="FlyFiend7" parent="Alies" index="6" instance=ExtResource( 2 )]
 position = Vector2( -23.4988, 23.4987 )
-frame = 0
 
 [node name="FlyFiend8" parent="Alies" index="7" instance=ExtResource( 2 )]
 position = Vector2( -1.02173, 35.4184 )
+frame = 2
 
 [node name="FlyFiend9" parent="Alies" index="8" instance=ExtResource( 2 )]
 position = Vector2( 44.6439, 38.4595 )
-frame = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 anims/first = SubResource( 3 )

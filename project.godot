@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PickablObject",
+"class": "Bomb",
+"language": "GDScript",
+"path": "res://objects/bomb/Bomb.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://UI/TitleScreen.gd"
 } ]
 _global_script_class_icons={
+"Bomb": "",
 "Enemy": "",
 "HealPotion": "",
 "Key": "",
@@ -125,5 +131,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_clear_color=Color( 0.14902, 0.192157, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"

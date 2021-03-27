@@ -7,7 +7,7 @@ onready var time_left := $MarginContainer/HBoxContainer/TimeLeftContainer/HBoxCo
 func _ready():
 	if not show_time_left:
 		$MarginContainer/HBoxContainer/TimeLeftContainer.hide()
-
+		
 func on_player_hp_change(hp):
 	$MarginContainer/HBoxContainer/HP.setHP(hp)
 
@@ -22,3 +22,5 @@ func format_time(seconds: int):
 	var last_sec = seconds - (minutes * 60)
 	
 	return "%s:%s" % [minutes, "0%s" % last_sec if last_sec < 10 else last_sec]
+
+	
