@@ -2,7 +2,7 @@ extends Node
 
 ## TAKEN FROM GODOT DOC https://docs.godotengine.org/en/3.2/getting_started/step_by_step/singletons_autoload.html
 
-var current_scene = null
+var current_scene_ref: WeakRef
 var nav: Navigation2D #Seted by Nav2d itself
 var title_screen: Control
 
@@ -15,7 +15,8 @@ onready var outro_sceene = preload("res://levels/Outro.tscn")
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	var root = get_tree().get_root()
-	current_scene = root.get_child(root.get_child_count() - 1)
+	var scene = root.get_child(root.get_child_count() - 1)
+	current_scene_ref = weakref(scene)
 
 func _process(delta):
 	if is_game_started and Input.is_action_just_pressed("ui_cancel"):
@@ -54,16 +55,19 @@ func exit_game():
 
 func _deferred_goto_scene(scene: PackedScene):
 	# It is now safe to remove the current scene
-	current_scene.free()
+	var current_scene = current_scene_ref.get_ref()
+	if current_scene:
+		current_scene.free()
 
 	# Instance the new scene.
-	current_scene = scene.instance()
+	var new_scene = scene.instance()
+	current_scene_ref = weakref(new_scene)
 
 	# Add it to the active scene, as child of root.
-	get_tree().get_root().add_child(current_scene)
+	get_tree().get_root().add_child(new_scene)
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
-	get_tree().set_current_scene(current_scene)
+	get_tree().set_current_scene(new_scene)
 
 func get_nav_path(point1, point2):
 	return nav.get_simple_path(point1, point2)

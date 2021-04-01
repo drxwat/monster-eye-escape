@@ -1,39 +1,68 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/PickableObject.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/bucket/Bucket.gd" type="Script" id=2]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/props_itens/barrel.png" type="Texture" id=3]
 [ext_resource path="res://objects/bucket/PickedBucket.tscn" type="PackedScene" id=4]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/effects (new)/explosion_anim_f6.png" type="Texture" id=5]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/effects (new)/explosion_anim_f3.png" type="Texture" id=6]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/effects (new)/explosion_anim_f5.png" type="Texture" id=7]
+[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/effects (new)/explosion_anim_f4.png" type="Texture" id=8]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
-height = 5.0
-
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( -4.78732, -3.85682, -2.6887, -7.13172, 2.38335, -7.31453, 5.05815, -4.12396, 5.23435, 3.03632, 2.0422, 6.20831, -1.83626, 6.29547, -4.80874, 2.90507 )
-
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 7.0
 height = 7.0
 
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 5.0
+height = 5.0
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "blowup",
+"speed": 5.0
+} ]
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( -4.78732, -3.85682, -2.6887, -7.13172, 2.38335, -7.31453, 5.05815, -4.12396, 5.23435, 3.03632, 2.0422, 6.20831, -1.83626, 6.29547, -4.80874, 2.90507 )
+
 [node name="Bucket" instance=ExtResource( 1 )]
+mass = 0.8
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
 picked_item_sceene = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 position = Vector2( 0.596642, 0.696083 )
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource( 1 )
-
-[node name="LightOccluder2D" parent="." index="2"]
-occluder = SubResource( 2 )
-
-[node name="Area2D" type="Area2D" parent="." index="3"]
+[node name="Area2D" type="Area2D" parent="." index="1"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
+frames = SubResource( 3 )
+animation = "blowup"
+
+[node name="LightOccluder2D" parent="." index="4"]
+visible = false
+occluder = SubResource( 5 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

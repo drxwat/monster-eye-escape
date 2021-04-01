@@ -44,7 +44,7 @@ animations = [ {
 [node name="Torch" type="AnimatedSprite"]
 frames = SubResource( 7 )
 animation = "burn"
-frame = 5
+frame = 4
 playing = true
 
 [node name="LightDetector" parent="." instance=ExtResource( 2 )]

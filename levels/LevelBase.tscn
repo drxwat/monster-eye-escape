@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://env_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/full tilemap.png" type="Texture" id=3]
 [ext_resource path="res://player/RigidPlayer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/FPSMeter/FPSMeter.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 8, 16, 0, 16, 0, 8, 8, 8 )
@@ -230,23 +229,6 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 1 )]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" parent="CanvasLayer/Control" instance=ExtResource( 5 )]
-anchor_left = 0.351
-anchor_top = 0.031
-anchor_right = 0.351
-anchor_bottom = 0.031
-margin_left = 345.384
-margin_top = 17.36
 
 [node name="Environment" type="Node2D" parent="."]
 

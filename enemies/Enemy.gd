@@ -21,10 +21,10 @@ func _ready():
 	initialize()
 
 func _process(delta):
-	if disabled:
-		return
 	if is_dead:
 		$CollisionShape2D.disabled = true
+		return
+	if disabled:
 		return
 
 	if target and "is_dead" in target and target.is_dead:

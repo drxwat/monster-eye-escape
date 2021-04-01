@@ -11,3 +11,7 @@ item_sceene = ExtResource( 1 )
 position = Vector2( -2.20832, -3.31248 )
 rotation = 0.965917
 texture = ExtResource( 2 )
+
+[node name="BodySprite" parent="Graphix" index="3"]
+animation = "idle"
+frame = 1

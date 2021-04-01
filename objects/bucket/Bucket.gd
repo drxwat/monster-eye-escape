@@ -7,6 +7,10 @@ var FORCE_DEVIDER = 40
 func _ready():
 	pass # Replace with function body.
 
+func blowup():
+	$AnimatedSprite.play()
+	yield($AnimatedSprite, "animation_finished")
+	queue_free()
 
 func _on_Area2D_body_entered(body):
 	if body is Enemy:

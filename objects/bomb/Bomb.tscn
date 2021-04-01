@@ -11,7 +11,7 @@
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 15.0
+radius = 20.0
 
 [sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( -4.25998, 0.56776, -2.71775, -1.6934, -0.522513, -2.41743, 1.96048, -1.67858, 3.41595, 0.372776, 3.55335, 3.15094, 1.86632, 4.97305, -0.182954, 5.77064, -2.3007, 5.10605, -3.97661, 3.41948 )

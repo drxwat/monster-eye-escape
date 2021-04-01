@@ -3,7 +3,6 @@
 [ext_resource path="res://images/light.png" type="Texture" id=1]
 [ext_resource path="res://core/LightDetector.gd" type="Script" id=2]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 40.0
 
@@ -17,7 +16,6 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 texture_scale = 1.5
 color = Color( 0.592157, 0.592157, 0.592157, 1 )
-shadow_enabled = true
 
 [node name="LightArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -31,5 +29,7 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlarmArea"]
 shape = SubResource( 2 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 [connection signal="body_entered" from="LightArea" to="." method="emit_lum_start"]
 [connection signal="body_exited" from="LightArea" to="." method="emit_lum_end"]

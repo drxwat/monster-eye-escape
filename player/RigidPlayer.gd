@@ -169,6 +169,7 @@ func release_item():
 	droped_item.position = global_position + (linear_velocity.normalized() * 10)
 	get_tree().get_current_scene().add_child(droped_item)
 	droped_item.apply_central_impulse(linear_velocity * 1.5)
+	apply_central_impulse(-linear_velocity / 2)
 	item_to_release = null
 
 func play_sfx(stream: AudioStream):

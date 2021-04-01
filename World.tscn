@@ -255,6 +255,7 @@ visible = false
 is_start_screen = false
 
 [node name="HBoxContainer" parent="CanvasLayer" instance=ExtResource( 19 )]
+visible = false
 anchor_left = 0.344
 anchor_top = 0.038
 anchor_right = 0.405
@@ -295,6 +296,7 @@ __meta__ = {
 }
 
 [node name="torches" type="Node2D" parent="."]
+visible = false
 
 [node name="Torch" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 942.761, 154.562 )
@@ -302,15 +304,13 @@ frame = 3
 
 [node name="Torch2" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 1129.18, 103.067 )
-frame = 1
+frame = 2
 
 [node name="Torch3" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 1054.61, 100.754 )
-frame = 4
 
 [node name="Torch4" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 866.719, 189.667 )
-frame = 0
 
 [node name="Torch5" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 890.218, 55.486 )
@@ -318,14 +318,13 @@ frame = 3
 
 [node name="Torch6" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 1013.16, 54.8049 )
-frame = 4
 
 [node name="Torch7" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 867.741, 421.589 )
+frame = 5
 
 [node name="Torch8" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 966.504, 422.952 )
-frame = 0
 
 [node name="Torch9" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 624.24, 230.534 )
@@ -337,14 +336,13 @@ frame = 2
 
 [node name="Torch11" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 854.119, 233.599 )
-frame = 4
 
 [node name="Torch12" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 656.593, 308.864 )
+frame = 5
 
 [node name="Torch13" parent="torches" instance=ExtResource( 7 )]
 position = Vector2( 797.926, 307.161 )
-frame = 4
 
 [node name="atttack_door" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 354.646, 123.016 )
@@ -594,7 +592,7 @@ linear_damp = 0.5
 move_speed = 100.0
 
 [node name="Gate" parent="." instance=ExtResource( 9 )]
-position = Vector2( 928.121, 415.299 )
+position = Vector2( 928.121, 431.987 )
 
 [node name="Rules" type="Label" parent="."]
 margin_left = 296.107
@@ -616,7 +614,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="HUNT_GATE" parent="." instance=ExtResource( 9 )]
-position = Vector2( 352.167, 127.206 )
+position = Vector2( 352.167, 145.021 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

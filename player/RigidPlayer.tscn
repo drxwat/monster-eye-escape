@@ -7,50 +7,50 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
+region = Rect2( 96, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 112, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 16 )
+region = Rect2( 128, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 16 )
+region = Rect2( 144, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 32, 16, 16 )
+region = Rect2( 160, 32, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 112, 32, 16, 16 )
+region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 32, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 144, 32, 16, 16 )
+region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 32, 16, 16 )
+region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "fly",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "die",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "fly",
 "speed": 5.0
 } ]
 
@@ -121,7 +121,7 @@ radius = 15.0
 [node name="RigidPlayer" type="RigidBody2D"]
 collision_mask = 6
 mode = 2
-mass = 0.7
+mass = 0.8
 physics_material_override = ExtResource( 3 )
 contacts_reported = 1
 contact_monitor = true
@@ -129,17 +129,20 @@ script = ExtResource( 2 )
 sfx_take_dmg = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1.10185 )
 frames = SubResource( 10 )
 animation = "fly"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1.10185 )
 shape = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -1.10185 )
 current = true
-zoom = Vector2( 0.4, 0.4 )
+zoom = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -149,6 +152,7 @@ anims/take_damage = SubResource( 12 )
 
 [node name="Blood" type="Particles2D" parent="."]
 show_behind_parent = true
+position = Vector2( 0, -1.10185 )
 rotation = 0.851073
 amount = 20
 lifetime = 0.5
@@ -156,6 +160,7 @@ one_shot = true
 process_material = SubResource( 13 )
 
 [node name="PowerUpPicker" type="Area2D" parent="."]
+position = Vector2( 0, -1.10185 )
 collision_layer = 0
 collision_mask = 16
 
@@ -163,8 +168,10 @@ collision_mask = 16
 shape = SubResource( 14 )
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -1.10185 )
 
 [node name="ObjectPicker" type="Area2D" parent="."]
+position = Vector2( 0, -1.10185 )
 collision_layer = 0
 collision_mask = 8
 

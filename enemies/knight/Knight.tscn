@@ -6,7 +6,6 @@
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/weapon_sword_1.png" type="Texture" id=4]
 [ext_resource path="res://images/light.png" type="Texture" id=5]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 0.2
@@ -48,6 +47,7 @@ animation = "death"
 anims/attack = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="." index="5"]
+visible = false
 texture = ExtResource( 5 )
 texture_scale = 1.5
 color = Color( 0.584314, 0.584314, 0.584314, 1 )
