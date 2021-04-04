@@ -10,6 +10,7 @@ func _ready():
 func blowup():
 	$AnimatedSprite.play()
 	yield($AnimatedSprite, "animation_finished")
+	on_destroy()
 	queue_free()
 
 func _on_Area2D_body_entered(body):

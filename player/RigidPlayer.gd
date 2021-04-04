@@ -9,6 +9,7 @@ var joystick
 var joystick_action
 var _state: int = IDLE
 
+var HIT_DAMAGE := 1.0
 var MAX_HP = 4
 var HP = MAX_HP
 
@@ -178,3 +179,13 @@ func play_sfx(stream: AudioStream):
 
 func _on_ObjectPicker_body_exited(body):
 	item_to_pick = null
+	
+
+func hit_enemy(body: Node2D):
+	if body is Enemy:
+		var force = linear_velocity.length()
+		var damage = HIT_DAMAGE * ceil((force / 40))
+		if damage > 1:
+			take_damage(1)
+			body.take_damage(damage - 1)
+			body.push(position.direction_to(body.position))

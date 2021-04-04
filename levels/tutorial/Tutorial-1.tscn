@@ -1,14 +1,19 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/bucket/Bucket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/gate/Gate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/bomb/Bomb.tscn" type="PackedScene" id=4]
-[ext_resource path="res://enemies/knight/KnightWithKey.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/knight/Knight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/next_level/NextLevel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/key/Key.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/potions/heal/HealPotion.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 261.491, 291.244, 0, 0, 0, 0, 263.93, 420.478, 0, 0, 0, 0, -103.29, 418.528, 0, 0, 0, 0, -109.142, 299.047, 0, 0, 0, 0, 71.3814, 296.81, 0, 0, 0, 0, 261.491, 291.244 )
+}
 
 [node name="Tutorial-1" instance=ExtResource( 1 )]
 
@@ -32,6 +37,7 @@ position = Vector2( 234.757, -19.1967 )
 
 [node name="Bucket6" parent="Objects" index="3" instance=ExtResource( 2 )]
 position = Vector2( 239.698, -4.21201 )
+physics_material_override = null
 
 [node name="Bucket7" parent="Objects" index="4" instance=ExtResource( 2 )]
 position = Vector2( 449.223, -57.5362 )
@@ -67,7 +73,7 @@ position = Vector2( 225.062, -35.336 )
 position = Vector2( 229.023, -54.9845 )
 
 [node name="RigidPlayer" parent="." index="5"]
-position = Vector2( 49.6618, 511.971 )
+position = Vector2( 143.522, 451.292 )
 
 [node name="ChainBlowTimer" type="Timer" parent="." index="6"]
 
@@ -207,7 +213,8 @@ position = Vector2( 651.891, 405.688 )
 position = Vector2( 631.358, 404.067 )
 
 [node name="Bucket35" parent="Buckets2" index="43" instance=ExtResource( 2 )]
-position = Vector2( 634.059, 422.98 )
+position = Vector2( 245.821, 460.507 )
+drop_type = 1
 
 [node name="Bucket34" parent="Buckets2" index="44" instance=ExtResource( 2 )]
 position = Vector2( 689.927, 414.449 )
@@ -308,7 +315,7 @@ position = Vector2( 690.558, 371.793 )
 position = Vector2( 672.286, 382.121 )
 
 [node name="Bomb24" parent="Bobmbs" index="24" instance=ExtResource( 4 )]
-position = Vector2( 632.962, 388.873 )
+position = Vector2( 173.731, 438.568 )
 
 [node name="Bomb23" parent="Bobmbs" index="25" instance=ExtResource( 4 )]
 position = Vector2( 620.677, 373.414 )
@@ -363,12 +370,23 @@ position = Vector2( 522.421, 149.506 )
 [node name="HealPotion2" parent="Objects3" index="2" instance=ExtResource( 9 )]
 position = Vector2( 521.399, 181.178 )
 
-[node name="KnightWithKey" parent="." index="11" instance=ExtResource( 5 )]
-position = Vector2( -45.5365, 356.081 )
-
-[node name="Gate2" parent="." index="12" instance=ExtResource( 3 )]
+[node name="Gate2" parent="." index="11" instance=ExtResource( 3 )]
 position = Vector2( -16.6969, 271.261 )
 
-[node name="NextLevel" parent="." index="13" instance=ExtResource( 7 )]
+[node name="NextLevel" parent="." index="12" instance=ExtResource( 7 )]
 position = Vector2( -84.5946, 191.567 )
 next_level = ExtResource( 6 )
+
+[node name="Knight" parent="." index="13" instance=ExtResource( 5 )]
+position = Vector2( 23.5509, 306.007 )
+
+[node name="Patrol" parent="Knight/Node" index="1"]
+position = Vector2( 0.463287, 0 )
+curve = SubResource( 1 )
+
+[node name="Knight2" parent="." index="14" instance=ExtResource( 5 )]
+position = Vector2( -62.2125, 518.271 )
+
+[editable path="Knight"]
+
+[editable path="Knight2"]

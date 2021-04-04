@@ -11,13 +11,23 @@ var target setget set_target
 var point_of_interest setget set_i_point
 var is_chasing = false
 var is_attacking = false
+var is_patroling := false
 var is_dead = false
 var push_dir = null
 var nav_path = null
 
+var patrol_path := PoolVector2Array()
+
 var DISTANCE_MARGIN = 5
 
 func _ready():
+#	for patrol_point in $Node/Patrol.curve.get_baked_points():
+#		patrol_path.append(patrol_point + global_position)
+	patrol_path = $Node/Patrol.curve.get_baked_points()
+	if has_patrol_path():
+		is_patroling = true
+		nav_path = PoolVector2Array(patrol_path)
+		$Node/DebugLine.points = nav_path
 	initialize()
 
 func _process(delta):
@@ -26,7 +36,6 @@ func _process(delta):
 		return
 	if disabled:
 		return
-
 	if target and "is_dead" in target and target.is_dead:
 		set_target(null)
 
@@ -35,12 +44,8 @@ func _process(delta):
 		move_and_collide(push_dir * SPEED * delta)
 		return
 	
-	if nav_path and nav_path.empty():
-		nav_path = null
-
-#	if nav_path and not nav_path.empty():
-#		move_along_path(delta)
-#		return
+	if nav_path != null and nav_path.empty():
+		nav_path = PoolVector2Array(patrol_path) if has_patrol_path() else null
 
 	if is_chasing:
 		chase(target)
@@ -57,11 +62,14 @@ func _process(delta):
 	if is_attacking:
 		attack(target)
 
+func has_patrol_path():
+	return not patrol_path.empty()
+
 func disable_collision():
 	$CollisionShape2D.disabled = true
 
 func set_target(value):
-	nav_path = null
+#	nav_path = null
 	target = value
 	if value:
 		is_chasing = true

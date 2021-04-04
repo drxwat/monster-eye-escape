@@ -858,7 +858,7 @@ volume_db = -20.0
 autoplay = true
 
 [node name="Gate" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1184.23, 336.625 )
+position = Vector2( 1184.23, 351.593 )
 is_opened = true
 
 [node name="obj" type="Node2D" parent="."]

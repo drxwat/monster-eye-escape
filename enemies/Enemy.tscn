@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/knight_idle_anim_f0.png" type="Texture" id=1]
 [ext_resource path="res://enemies/Enemy.gd" type="Script" id=2]
@@ -14,6 +14,11 @@ radius = 15.0
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 5.0
 height = 5.0
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array(  )
+}
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -50,6 +55,13 @@ wait_time = 3.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_distance = 250.0
+
+[node name="Node" type="Node" parent="."]
+
+[node name="DebugLine" type="Line2D" parent="Node"]
+
+[node name="Patrol" type="Path2D" parent="Node"]
+curve = SubResource( 4 )
 [connection signal="body_entered" from="GuardArea" to="." method="_on_GuardArea_body_entered"]
 [connection signal="body_exited" from="GuardArea" to="." method="_on_GuardArea_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]

@@ -268,3 +268,5 @@ __meta__ = {
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="RigidPlayer" parent="." instance=ExtResource( 4 )]
+[connection signal="dead" from="RigidPlayer" to="CanvasLayer/GUI" method="show_dead_msg"]
+[connection signal="hp_change" from="RigidPlayer" to="CanvasLayer/GUI" method="on_player_hp_change"]

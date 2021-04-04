@@ -51,4 +51,8 @@ visible = false
 texture = ExtResource( 5 )
 texture_scale = 1.5
 color = Color( 0.584314, 0.584314, 0.584314, 1 )
+
+[node name="DebugLine" parent="Node" index="0"]
+width = 2.0
+default_color = Color( 1, 0.470588, 0.4, 1 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

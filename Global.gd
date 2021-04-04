@@ -1,6 +1,9 @@
 extends Node
 
-## TAKEN FROM GODOT DOC https://docs.godotengine.org/en/3.2/getting_started/step_by_step/singletons_autoload.html
+var DROP_SCENES = {
+	Enums.DROP.NONE: null,
+	Enums.DROP.HEAL: preload("res://objects/potions/heal/HealPotion.tscn"),
+}
 
 var current_scene_ref: WeakRef
 var nav: Navigation2D #Seted by Nav2d itself
