@@ -10,7 +10,7 @@ var joystick_action
 var _state: int = IDLE
 
 var HIT_DAMAGE := 1.0
-var MAX_HP = 4
+var MAX_HP = 10
 var HP = MAX_HP
 
 export var move_speed := 400.0
@@ -42,6 +42,7 @@ func _ready():
 	if joystick_action_path:
 		joystick_action = get_node(joystick_action_path)
 	$AnimatedSprite.play("fly")
+	emit_signal("hp_change", HP)
 
 func _process(delta):
 	if disabled:

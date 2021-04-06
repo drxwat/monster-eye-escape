@@ -9,7 +9,7 @@ func _ready():
 		$MarginContainer/HBoxContainer/TimeLeftContainer.hide()
 		
 func on_player_hp_change(hp):
-	$MarginContainer/HBoxContainer/HP.setHP(hp)
+	$MarginContainer/HBoxContainer/HPHearts.update_health(hp)
 
 func show_dead_msg():
 	$CenterContainer/Dead.visible = true

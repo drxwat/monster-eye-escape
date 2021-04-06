@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://objects/PickableObject.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/bucket/Bucket.gd" type="Script" id=2]
-[ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/props_itens/barrel.png" type="Texture" id=3]
+[ext_resource path="res://assets/props/bucket/barrel.png" type="Texture" id=3]
 [ext_resource path="res://objects/bucket/PickedBucket.tscn" type="PackedScene" id=4]
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/effects (new)/explosion_anim_f6.png" type="Texture" id=5]
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/effects (new)/explosion_anim_f3.png" type="Texture" id=6]
@@ -21,7 +21,11 @@ height = 7.0
 radius = 5.0
 height = 5.0
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 16 )
 
@@ -31,7 +35,12 @@ region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "condition",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "blowup",
 "speed": 5.0
@@ -64,7 +73,7 @@ shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 frames = SubResource( 6 )
-animation = "blowup"
+animation = "condition"
 
 [node name="LightOccluder2D" parent="." index="4"]
 visible = false

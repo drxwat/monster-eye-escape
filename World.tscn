@@ -549,7 +549,7 @@ position = Vector2( 407.325, 192.263 )
 [node name="pickups" type="Node2D" parent="."]
 
 [node name="HealPotion7" parent="pickups" instance=ExtResource( 10 )]
-position = Vector2( 449.599, 270.791 )
+position = Vector2( 443.011, 263.412 )
 
 [node name="HealPotion" parent="pickups" instance=ExtResource( 10 )]
 position = Vector2( 307.165, 375.639 )
