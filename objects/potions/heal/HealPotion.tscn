@@ -8,4 +8,3 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 0.0709091, -0.25267 )
-scale = Vector2( 0.5, 0.5 )

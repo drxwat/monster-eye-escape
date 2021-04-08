@@ -15,14 +15,14 @@ func blowup():
 	on_destroy()
 	queue_free()
 	
-func take_damage():
-	print(HP)
-	self.HP = HP - 1
-	print(HP)
-	if HP > 0:
-		$AnimatedSprite.frame = MAX_HP - HP
-	else:
-		blowup()
+#func take_damage():
+#	print(HP)
+#	HP = HP - 1
+#	print(HP)
+#	if HP > 0:
+#		$AnimatedSprite.frame = MAX_HP - HP
+#	else:
+#		blowup()
 
 func _on_Area2D_body_entered(body):
 	if body is Enemy:
@@ -31,5 +31,5 @@ func _on_Area2D_body_entered(body):
 		if damage > 1:
 			body.take_damage(damage - 1)
 			body.push(position.direction_to(body.position))
-		take_damage()
+#		take_damage()
 		

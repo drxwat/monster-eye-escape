@@ -1,19 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/bucket/Bucket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/gate/Gate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/bomb/Bomb.tscn" type="PackedScene" id=4]
-[ext_resource path="res://enemies/knight/Knight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/next_level/NextLevel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/key/Key.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/potions/heal/HealPotion.tscn" type="PackedScene" id=9]
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 261.491, 291.244, 0, 0, 0, 0, 263.93, 420.478, 0, 0, 0, 0, -103.29, 418.528, 0, 0, 0, 0, -109.142, 299.047, 0, 0, 0, 0, 71.3814, 296.81, 0, 0, 0, 0, 261.491, 291.244 )
-}
 
 [node name="Tutorial-1" instance=ExtResource( 1 )]
 
@@ -73,7 +67,7 @@ position = Vector2( 225.062, -35.336 )
 position = Vector2( 229.023, -54.9845 )
 
 [node name="RigidPlayer" parent="." index="5"]
-position = Vector2( 143.522, 451.292 )
+position = Vector2( 74.3585, 396.557 )
 
 [node name="ChainBlowTimer" type="Timer" parent="." index="6"]
 
@@ -376,17 +370,3 @@ position = Vector2( -16.6969, 271.261 )
 [node name="NextLevel" parent="." index="12" instance=ExtResource( 7 )]
 position = Vector2( -84.5946, 191.567 )
 next_level = ExtResource( 6 )
-
-[node name="Knight" parent="." index="13" instance=ExtResource( 5 )]
-position = Vector2( 23.5509, 306.007 )
-
-[node name="Patrol" parent="Knight/Node" index="1"]
-position = Vector2( 0.463287, 0 )
-curve = SubResource( 1 )
-
-[node name="Knight2" parent="." index="14" instance=ExtResource( 5 )]
-position = Vector2( -62.2125, 518.271 )
-
-[editable path="Knight"]
-
-[editable path="Knight2"]

@@ -1,6 +1,9 @@
 class_name RigidPlayer
 extends RigidBody2D
 
+const FLY_FORWARD_MULTILPLIER := 1
+const FLY_BACK_MULTILPLIER := 3.0
+
 var item_to_pick = null
 var picked_item = null
 var item_to_release = null
@@ -83,7 +86,11 @@ func _physics_process(delta):
 		move_dir = joystick.get_direction()
 	else:
 		move_dir = get_move_direction()
-	apply_central_impulse(move_dir)
+	
+	var fly_multiplayer = FLY_FORWARD_MULTILPLIER
+	if move_dir.dot(linear_velocity) < 0:
+		fly_multiplayer = FLY_BACK_MULTILPLIER
+	apply_central_impulse(move_dir * fly_multiplayer)
 	
 #	var move_dir = Vector2.ZERO
 #	if joystick:
