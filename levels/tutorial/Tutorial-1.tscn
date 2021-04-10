@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://levels/base_level/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/bucket/Bucket.tscn" type="PackedScene" id=2]
@@ -10,14 +10,16 @@
 [ext_resource path="res://objects/key/Key.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/potions/heal/HealPotion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://core/checkpoint/Checkpoint.tscn" type="PackedScene" id=10]
+[ext_resource path="res://core/trap/fire-trap/FireTrap.tscn" type="PackedScene" id=11]
+[ext_resource path="res://enemies/knight/Knight.tscn" type="PackedScene" id=12]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 10, 90 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 90, 10 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 10, 70 )
 
 [node name="Tutorial-1" instance=ExtResource( 1 )]
@@ -31,6 +33,24 @@ tile_data = PoolIntArray( -327691, 4, 0, -327690, 8, 0, -327689, 8, 0, -327688, 
 
 [node name="decor" parent="Environment" index="2"]
 tile_data = PoolIntArray( -262151, 20, 0, -327674, 22, 0, -327658, 22, 0, -327646, 21, 0, 589818, 21, 0, 589821, 22, 0, 1900564, 22, 0, 1900566, 20, 0, 1900573, 21, 0, 1900579, 22, 0 )
+
+[node name="Knight" parent="Enemies" index="0" instance=ExtResource( 12 )]
+position = Vector2( 157.2, 316.844 )
+
+[node name="Knight2" parent="Enemies" index="1" instance=ExtResource( 12 )]
+position = Vector2( 21.6775, 325.057 )
+
+[node name="Knight3" parent="Enemies" index="2" instance=ExtResource( 12 )]
+position = Vector2( -70.7244, 369.718 )
+
+[node name="Knight4" parent="Enemies" index="3" instance=ExtResource( 12 )]
+position = Vector2( -88.6914, 464.687 )
+
+[node name="Knight5" parent="Enemies" index="4" instance=ExtResource( 12 )]
+position = Vector2( 19.6241, 543.229 )
+
+[node name="Knight6" parent="Enemies" index="5" instance=ExtResource( 12 )]
+position = Vector2( 132.046, 462.634 )
 
 [node name="Bucket3" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( 262.024, -17.0593 )
@@ -78,16 +98,13 @@ position = Vector2( 225.062, -35.336 )
 [node name="Bucket11" parent="Objects" index="14" instance=ExtResource( 2 )]
 position = Vector2( 229.023, -54.9845 )
 
-[node name="RigidPlayer" parent="." index="5"]
-position = Vector2( 667.158, 29.7963 )
+[node name="ChainBlowTimer" type="Timer" parent="." index="5"]
 
-[node name="ChainBlowTimer" type="Timer" parent="." index="6"]
-
-[node name="Gate" parent="." index="7" instance=ExtResource( 3 )]
+[node name="Gate" parent="." index="6" instance=ExtResource( 3 )]
 position = Vector2( 672.119, 79.6375 )
 is_opened = true
 
-[node name="Buckets2" type="Node2D" parent="." index="8"]
+[node name="Buckets2" type="Node2D" parent="." index="7"]
 
 [node name="Bucket" parent="Buckets2" index="0" instance=ExtResource( 2 )]
 position = Vector2( 739.223, 321.686 )
@@ -246,7 +263,7 @@ position = Vector2( 602.4, 387.91 )
 [node name="Bucket27" parent="Buckets2" index="51" instance=ExtResource( 2 )]
 position = Vector2( 642.658, 370.078 )
 
-[node name="Bobmbs" type="Node2D" parent="." index="9"]
+[node name="Bobmbs" type="Node2D" parent="." index="8"]
 
 [node name="Bomb" parent="Bobmbs" index="0" instance=ExtResource( 4 )]
 position = Vector2( 618.834, 160.051 )
@@ -365,7 +382,7 @@ position = Vector2( 725.537, 381.027 )
 [node name="Bomb17" parent="Bobmbs" index="38" instance=ExtResource( 4 )]
 position = Vector2( 697.809, 403.913 )
 
-[node name="Objects3" type="Node2D" parent="." index="10"]
+[node name="Objects3" type="Node2D" parent="." index="9"]
 
 [node name="Key" parent="Objects3" index="0" instance=ExtResource( 8 )]
 position = Vector2( 521.399, 210.807 )
@@ -376,30 +393,86 @@ position = Vector2( 522.421, 149.506 )
 [node name="HealPotion2" parent="Objects3" index="2" instance=ExtResource( 9 )]
 position = Vector2( 521.399, 181.178 )
 
-[node name="Gate2" parent="." index="11" instance=ExtResource( 3 )]
+[node name="Gate2" parent="." index="10" instance=ExtResource( 3 )]
 position = Vector2( -16.6969, 271.261 )
 
-[node name="NextLevel" parent="." index="12" instance=ExtResource( 7 )]
+[node name="NextLevel" parent="." index="11" instance=ExtResource( 7 )]
 position = Vector2( -84.5946, 191.567 )
 next_level = ExtResource( 6 )
+
+[node name="Traps" type="Node2D" parent="." index="12"]
+position = Vector2( 78.9313, 415.796 )
+
+[node name="FireTrap" parent="Traps" index="0" instance=ExtResource( 11 )]
+
+[node name="FireTrap2" parent="Traps" index="1" instance=ExtResource( 11 )]
+position = Vector2( -39.5275, -0.513336 )
+
+[node name="FireTrap4" parent="Traps" index="2" instance=ExtResource( 11 )]
+position = Vector2( -1.54755, 34.0465 )
+
+[node name="FireTrap3" parent="Traps" index="3" instance=ExtResource( 11 )]
+position = Vector2( -41.075, 33.5332 )
+
+[node name="FireTrap6" parent="Traps" index="4" instance=ExtResource( 11 )]
+position = Vector2( -2.32132, 69.6405 )
+
+[node name="FireTrap5" parent="Traps" index="5" instance=ExtResource( 11 )]
+position = Vector2( -41.8488, 69.1272 )
+
+[node name="FireTrap8" parent="Traps" index="6" instance=ExtResource( 11 )]
+position = Vector2( -2.32132, 106.008 )
+
+[node name="FireTrap7" parent="Traps" index="7" instance=ExtResource( 11 )]
+position = Vector2( -41.8488, 105.495 )
+
+[node name="FireTrap10" parent="Traps" index="8" instance=ExtResource( 11 )]
+position = Vector2( -76.6046, -2.32132 )
+
+[node name="FireTrap9" parent="Traps" index="9" instance=ExtResource( 11 )]
+position = Vector2( -116.132, -2.83463 )
+
+[node name="FireTrap12" parent="Traps" index="10" instance=ExtResource( 11 )]
+position = Vector2( -78.1521, 35.5941 )
+
+[node name="FireTrap11" parent="Traps" index="11" instance=ExtResource( 11 )]
+position = Vector2( -117.68, 35.0808 )
+
+[node name="FireTrap14" parent="Traps" index="12" instance=ExtResource( 11 )]
+position = Vector2( -76.6046, 71.1881 )
+
+[node name="FireTrap13" parent="Traps" index="13" instance=ExtResource( 11 )]
+position = Vector2( -116.132, 70.6748 )
+
+[node name="FireTrap16" parent="Traps" index="14" instance=ExtResource( 11 )]
+position = Vector2( -74.2832, 106.008 )
+
+[node name="FireTrap15" parent="Traps" index="15" instance=ExtResource( 11 )]
+position = Vector2( -113.811, 105.495 )
+
+[node name="Checkpoints" parent="." index="13"]
+visible = false
 
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource( 10 )]
 dialogic_timeline = "tutoral-1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint" index="0"]
 position = Vector2( -53.6444, -5.85212 )
-shape = SubResource( 1 )
+shape = SubResource( 11 )
 
 [node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource( 10 )]
 position = Vector2( 671.915, 104.341 )
 dialogic_timeline = "tutoral-2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 12 )
 
 [node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource( 10 )]
 position = Vector2( 317.444, 516.117 )
 dialogic_timeline = "tutoral-3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint3" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 13 )
+
+[node name="RigidPlayer" parent="." index="14"]
+position = Vector2( 233.896, 389.137 )
