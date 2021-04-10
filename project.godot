@@ -14,6 +14,36 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/bomb/Bomb.gd"
 }, {
+"base": "PickablObject",
+"class": "Bucket",
+"language": "GDScript",
+"path": "res://objects/bucket/Bucket.gd"
+}, {
+"base": "Node",
+"class": "Dialogic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicClass.gd"
+}, {
+"base": "Control",
+"class": "DialogicBackgroundMusic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
+}, {
+"base": "Node",
+"class": "DialogicDefinitionsUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
+}, {
+"base": "Reference",
+"class": "DialogicResources",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicResources.gd"
+}, {
+"base": "Reference",
+"class": "DialogicUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicUtil.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
@@ -56,6 +86,12 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bomb": "",
+"Bucket": "",
+"Dialogic": "",
+"DialogicBackgroundMusic": "",
+"DialogicDefinitionsUtil": "",
+"DialogicResources": "",
+"DialogicUtil": "",
 "Enemy": "",
 "Enums": "",
 "HealPotion": "",
@@ -75,11 +111,16 @@ config/icon="res://images/web_hi_res_512.png"
 [autoload]
 
 Global="*res://Global.gd"
+DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 
 [display]
 
 window/stretch/mode="2d"
 window/stretch/aspect="keep_height"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "dialogic" )
 
 [importer_defaults]
 

@@ -2,6 +2,7 @@ extends Control
 
 export var show_time_left = true
 onready var time_left := $MarginContainer/HBoxContainer/TimeLeftContainer/HBoxContainer/TimeLeft
+onready var dialog_root := $DialogRoot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,4 +24,6 @@ func format_time(seconds: int):
 	
 	return "%s:%s" % [minutes, "0%s" % last_sec if last_sec < 10 else last_sec]
 
-	
+
+func set_dialog(dialog: Node):
+	$DialogRoot.add_child(dialog)

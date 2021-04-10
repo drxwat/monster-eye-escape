@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/GUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://env_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://v1.1 dungeon crawler 16x16 pixel pack/full tilemap.png" type="Texture" id=3]
 [ext_resource path="res://player/RigidPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/base_level/LevelBase.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 8, 16, 0, 16, 0, 8, 8, 8 )
@@ -219,6 +220,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 8, 8, 16, 0 )
 15/z_index = 0
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.745098, 0.745098, 0.745098, 1 )
@@ -268,5 +270,7 @@ __meta__ = {
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="RigidPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="Checkpoints" type="Node2D" parent="."]
 [connection signal="dead" from="RigidPlayer" to="CanvasLayer/GUI" method="show_dead_msg"]
 [connection signal="hp_change" from="RigidPlayer" to="CanvasLayer/GUI" method="on_player_hp_change"]

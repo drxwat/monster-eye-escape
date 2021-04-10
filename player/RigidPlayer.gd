@@ -4,6 +4,7 @@ extends RigidBody2D
 const FLY_FORWARD_MULTILPLIER := 1
 const FLY_BACK_MULTILPLIER := 3.0
 
+var hp_bucket :int
 var item_to_pick = null
 var picked_item = null
 var item_to_release = null
@@ -16,7 +17,6 @@ var HIT_DAMAGE := 1.0
 var MAX_HP = 10
 var HP = MAX_HP
 
-var hp_bucket :int
 export var move_speed := 400.0
 export var sfx_take_dmg: AudioStream
 export var sfx_die: AudioStream
@@ -166,7 +166,7 @@ func _on_ObjectPicker_body_entered(body):
 		item_to_pick = body
 
 func pickup_item(item: PickablObject):
-	if item.filename == "res://objects/bucket/Bucket.tscn":
+	if item is Bucket:
 		hp_bucket = item.now_HP 
 	item_to_release = load(item.get_normal_item_path())
 	picked_item = item.get_picket_item_sceene().instance()
@@ -179,7 +179,7 @@ func release_item():
 	picked_item = null
 	var droped_item = item_to_release.instance()
 	#print(str(droped_item.filename))
-	if droped_item.filename == "res://objects/bucket/Bucket.tscn":
+	if droped_item is Bucket:
 		print(hp_bucket)
 		droped_item.now_HP = hp_bucket
 	droped_item.position = global_position + (linear_velocity.normalized() * 10)

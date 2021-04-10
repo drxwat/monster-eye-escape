@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://core/checkpoint/Checkpoint.gd" type="Script" id=1]
+
+[node name="Checkpoint" type="Area2D"]
+position = Vector2( 43.7693, 2.16145 )
+collision_layer = 0
+script = ExtResource( 1 )
+[connection signal="body_entered" from="." to="." method="enter_checkpoint"]

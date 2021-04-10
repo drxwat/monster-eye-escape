@@ -3,12 +3,13 @@
 [ext_resource path="res://enemies/knight/Knight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/fly-friend/FlyFiend.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/AnimationPlayerOutro.gd" type="Script" id=3]
-[ext_resource path="res://levels/LevelBase.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/base_level/LevelBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/next_level/NextLevel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sfx/runing_boots.wav" type="AudioStream" id=6]
 [ext_resource path="res://fonts/18068.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://fonts/Signika-VariableFont_wght.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://UI/TitleScreen.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
