@@ -450,7 +450,10 @@ position = Vector2( -74.2832, 106.008 )
 [node name="FireTrap15" parent="Traps" index="15" instance=ExtResource( 11 )]
 position = Vector2( -113.811, 105.495 )
 
-[node name="Checkpoints" parent="." index="13"]
+[node name="RigidPlayer" parent="." index="13"]
+position = Vector2( 233.896, 389.137 )
+
+[node name="Checkpoints" parent="." index="14"]
 visible = false
 
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource( 10 )]
@@ -473,6 +476,3 @@ dialogic_timeline = "tutoral-3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint3" index="0"]
 shape = SubResource( 13 )
-
-[node name="RigidPlayer" parent="." index="14"]
-position = Vector2( 233.896, 389.137 )

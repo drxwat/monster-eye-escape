@@ -1,6 +1,7 @@
 extends PickablObject
 class_name Bucket
 
+const COLLISION_SELF_DAMAGE = 1
 export var BASE_DAMAGE = 1
 var already : bool
 
@@ -17,13 +18,8 @@ func blowup():
 	on_destroy()
 	queue_free()
 	
-func take_partial_damage():
-	#if !already:
-		#print(now_HP)
-	now_HP = now_HP - 1
-		#print(now_HP)
-		#if now_HP > 0:
-		#	$AnimatedSprite.frame = MAX_HP - HP
+func take_damage(damage):
+	now_HP = now_HP - damage
 	if now_HP < 0:
 		blowup()
 
@@ -32,7 +28,7 @@ func _on_Area2D_body_entered(body):
 		var force = linear_velocity.length()
 		var damage = BASE_DAMAGE * ceil((force / FORCE_DEVIDER))
 		if damage > 1:
-			body.take_partial_damage(damage - 1)
+			body.take_damage(damage - 1)
 			body.push(position.direction_to(body.position))
-		take_partial_damage()
-	#	already = true
+		take_damage(COLLISION_SELF_DAMAGE)
+
