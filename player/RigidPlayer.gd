@@ -16,6 +16,7 @@ var HIT_DAMAGE := 1.0
 var MAX_HP = 10
 var HP = MAX_HP
 
+var hp_bucket :int
 export var move_speed := 400.0
 export var sfx_take_dmg: AudioStream
 export var sfx_die: AudioStream
@@ -165,6 +166,8 @@ func _on_ObjectPicker_body_entered(body):
 		item_to_pick = body
 
 func pickup_item(item: PickablObject):
+	if item.filename == "res://objects/bucket/Bucket.tscn":
+		hp_bucket = item.now_HP 
 	item_to_release = load(item.get_normal_item_path())
 	picked_item = item.get_picket_item_sceene().instance()
 	picked_item.position = Vector2(0, 10)
@@ -175,6 +178,10 @@ func release_item():
 	picked_item.queue_free()
 	picked_item = null
 	var droped_item = item_to_release.instance()
+	#print(str(droped_item.filename))
+	if droped_item.filename == "res://objects/bucket/Bucket.tscn":
+		print(hp_bucket)
+		droped_item.now_HP = hp_bucket
 	droped_item.position = global_position + (linear_velocity.normalized() * 10)
 	get_tree().get_current_scene().add_child(droped_item)
 	droped_item.apply_central_impulse(linear_velocity * 1.5)
